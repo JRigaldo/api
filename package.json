@@ -1,8 +1,8 @@
 {
-  "name": "testapi",
+  "name": "testapib",
   "version": "1.0.0",
   "description": "",
-  "main": "server/app.js",
+  "main": "bin/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ."
@@ -13,6 +13,6 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "1.18.9"
   }
 }

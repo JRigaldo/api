@@ -1,31 +1,23 @@
+'use strict';
+
 const Express = require('express');
 
 let app = Express();
 
-let users = [{name: 'Jerome'}, {name: 'axel'}];
 
-/*const Router = Express.Router();
+const UserRoute = require('./api/user/user.route');
 
-let UserRoute = Router.route('/toto')
-    .post((req, res) => {
-        res.json({Hello: "World!"});
-    });
 
-app.use('/users', UserRoute);*/
+app.use('./api/user', UserRoute);
 
-// -----------------
 
-app.route('/').get((req, res) => {
 
-    //res.send('Hello world');
+app.start = (host, port) => {
+   return app.listen(host, port, () => {
+      console.log(`[${process.env.PORT}] server is listening @ ${process.env.PORT}`)
+   });
+}
 
-    //res.sendStatus(418);
 
-    //res.status(418).send("Je suis une grosse théière");
-
-    res.json(users);
-});
-
-app.listen(process.env.PORT, () => console.log('Server is listening on ' + process.env.PORT));
 
 module.exports = app;
