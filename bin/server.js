@@ -13,5 +13,9 @@ APPEL L'OBJET ENVIRONNEMENT QUI EST DEFINI DANS L'ENV DE LA MACHINE
 
 ---------- */
 
-app.start(process.env.PORT);
+app.setup()
+    .then(() => app.start(process.env.PORT, process.env.HOST))
+    .then(() => console.info(`[${process.env.NODE_ENV}] Server listening @ ${process.env.HOST}:${process.env.PORT}`))
+    .catch(err => consoile.error(error));
+
 

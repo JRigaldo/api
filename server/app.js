@@ -26,14 +26,20 @@ app.use(MethodOverride());
 
 app.use(Express.static('./client'));
 
-app.use('/api/user', UserRoute);
+app.use('/api/users', UserRoute);
+
+/* ---------- DATABASE ---------- */
+
+const Database = require('./database');
+
+app.setup = () => Database.connect(process.env.MONGO_URI);
 
 /* ---------- MODULE EXPORTS ---------- */
 
-app.start = (port, host) => {
-    return app.listen(port, host, () => {
-        console.info(`[${process.env.NODE_ENV}] Server listening @ ${process.env.HOST}:${process.env.PORT}`);
-    });
-};
+app.start = (port, host) => app.listen(port, host);
+
+/*function start2(port, host) {
+    return app.listen(port, host);
+}*/
 
 module.exports = app;
